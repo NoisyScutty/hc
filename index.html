@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NaturalLife - Sürdürülebilir Yaşam</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #fefefe;
+    color: #333;
+  }
+  header {
+    background: #2c6e49;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #d8e9d3;
+    font-weight: 700;
+    font-size: 1.6rem;
+    cursor: default;
+  }
+  header .logo svg {
+    fill: #d8e9d3;
+    width: 40px;
+    height: 40px;
+  }
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+  nav a {
+    color: #d8e9d3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #a2c99c;
+  }
+  .btn {
+    border: 2px solid #d8e9d3;
+    border-radius: 24px;
+    padding: 8px 20px;
+    background: transparent;
+    color: #d8e9d3;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  .btn:hover {
+    background: #a2c99c;
+    color: #2c6e49;
+    border-color: #a2c99c;
+  }
+  main {
+    max-width: 1200px;
+    margin: 40px auto 60px auto;
+    padding: 0 20px;
+  }
+  .intro {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .intro-text {
+    flex: 1 1 400px;
+  }
+  .intro-text h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #2c6e49;
+  }
+  .intro-text p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #455a46;
+  }
+  .intro-image {
+    flex: 1 1 400px;
+    max-width: 500px;
+  }
+  .intro-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(44, 110, 73, 0.3);
+  }
+  .search-section {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .search-section input[type="search"] {
+    width: 90%;
+    max-width: 600px;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 2px solid #2c6e49;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .search-section input[type="search"]:focus {
+    border-color: #a2c99c;
+  }
+  .alphabet {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .alphabet button {
+    background: #a2c99c;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  .alphabet button:hover {
+    background-color: #2c6e49;
+  }
+  .info-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-around;
+  }
+  .info-card {
+    background: #e6f0e8;
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    box-shadow: 0 6px 12px rgba(44, 110, 73, 0.2);
+    transition: transform 0.3s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-8px);
+  }
+  .info-card h3 {
+    color: #2c6e49;
+    margin-bottom: 12px;
+  }
+  .info-card p {
+    color: #455a46;
+    line-height: 1.5;
+  }
+  footer {
+    background: #2c6e49;
+    color: #d8e9d3;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  footer p {
+    margin: 6px 0;
+  }
+  /* Login & Register Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(44, 110, 73, 0.7);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal.active {
+    display: flex;
+  }
+  .modal-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(44,110,73,0.4);
+    position: relative;
+  }
+  .modal-content h2 {
+    margin-top: 0;
+    color: #2c6e49;
+  }
+  .modal-content label {
+    display: block;
+    margin: 15px 0 6px;
+    font-weight: 600;
+    color: #455a46;
+  }
+  .modal-content input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid #a2c99c;
+    font-size: 1rem;
+    outline: none;
+  }
+  .modal-content input:focus {
+    border-color: #2c6e49;
+  }
+  .modal-content button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #2c6e49;
+    border: none;
+    color: #d8e9d3;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .modal-content button:hover {
+    background: #1f4b32;
+  }
+  .modal-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2c6e49;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <!-- Ağaç & yaprak temalı logo -->
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="30" fill="#a2c99c" />
+      <path d="M32 10 L24 40 L40 40 Z" fill="#2c6e49" />
+      <path d="M32 40 L28 60 L36 60 Z" fill="#2c6e49" />
+    </svg>
+    NaturalLife
+  </div>
+  <nav>
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Tekstil & İklim</a>
+    <a href="#">Çevre Bilinci</a>
+    <a href="#">Yardımcı</a>
+  </nav>
+  <div>
+    <button class="btn" id="btnLogin">Giriş Yap</button>
+    <button class="btn" id="btnRegister">Kayıt Ol</button>
+  </div>
+</header>
+<main>
+  <section class="intro">
+    <div class="intro-text">
+      <h1>Doğa Dostu Yaşam ve Sürdürülebilirlik</h1>
+      <p>Tekstil ve kıyafet atıklarını nasıl değerlendiririz? İklim değişikliğine karşı nasıl mücadele ederiz? NaturalLife ile sürdürülebilir çözümler ve pratik öneriler burada.</p>
+    </div>
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Orman ve doğa manzarası" />
+    </div>
+  </section>
+  <section class="search-section">
+    <input type="search" placeholder="Anahtar kelime veya konu ara..." />
+    <div class="alphabet">
+      <button>0-9</button><button>A</button><button>B</button><button>C</button><button>Ç</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>İ</button><button>J</button><button>K</button><button>L</button><button>M</button><button>N</button><button>O</button><button>Ö</button><button>P</button><button>R</button><button>S</button><button>T</button><button>U</button><button>Ü</button><button>V</button><button>Y</button><button>Z</button>
+    </div>
+  </section>
+  <section class="info-section">
+    <article class="info-card">
+      <h3>Tekstil Atıklarını Azaltma</h3>
+      <p>Eski kıyafetleri bağışlayarak veya geri dönüştürerek tekstil atıklarını azaltabilir, çevre kirliliğini önleyebiliriz.</p>
+    </article>
+    <article class="info-card">
+      <h3>İklim Değişikliği ile Mücadele</h3>
+      <p>Enerji tasarrufu, yenilenebilir enerji kullanımı ve karbon ayak izimizi küçültmek için adımlar atmak önemli.</p>
+    </article>
+    <article class="info-card">
+      <h3>Doğal Kaynakların Korunması</h3>
+      <p>Ağaç dikimi, su tasarrufu ve biyolojik çeşitliliği desteklemek gelecek nesiller için çok değerli.</p>
+    </article>
+  </section>
+</main>
+<footer>
+  <p>© 2025 NaturalLife - Doğa ve Sürdürülebilirlik</p>
+  <p>İletişim: info@naturallife.com | +90 555 123 45 67</p>
+  <p>Adres: İstanbul, Türkiye</p>
+</footer>
+
+<!-- Giriş Modal -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeLogin">&times;</span>
+    <h2>Giriş Yap</h2>
+    <form>
+      <label for="loginEmail">E-posta</label>
+      <input type="email" id="loginEmail" placeholder="E-postanızı girin" required />
+      <label for="loginPassword">Şifre</label>
+      <input type="password" id="loginPassword" placeholder="Şifrenizi girin" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+  </div>
+</div>
+
+<!-- Kayıt Modal -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeRegister">&times;</span>
+    <h2>Kayıt Ol</h2>
+    <form>
+      <label for="registerEmail">E-posta</label>
+      <input type="email" id="registerEmail" placeholder="E-postanızı girin" required />
+      <label for="registerPassword">Şifre</label>
+      <input type="password" id="registerPassword" placeholder="Şifrenizi girin" required />
+      <button type="submit">Kayıt Ol</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal açma kapama
+  const loginModal = document.getElementById('loginModal');
+  const registerModal = document.getElementById('registerModal');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnRegister = document.getElementById('btnRegister');
+  const closeLogin = document.getElementById('closeLogin');
+  const closeRegister = document.getElementById('closeRegister');
+
+  btnLogin.onclick = () => {
+    loginModal.classList.add('active');
+  };
+  btnRegister.onclick = () => {
+    registerModal.classList.add('active');
+  };
+  closeLogin.onclick = () => {
+    loginModal.classList.remove('active');
+  };
+  closeRegister.onclick = () => {
+    registerModal.classList.remove('active');
+  };
+  window.onclick = (e) => {
+    if (e.target === loginModal) loginModal.classList.remove('active');
+    if (e.target === registerModal) registerModal.classList.remove('active');
+  };
+</script>
+</body>
+</html>
