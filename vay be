@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NaturalLife - Sürdürülebilir Yaşam</title>
 <style>
+  .fade-in-img {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+  }
+  .fade-in-img.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  /* Animasyonlar */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .btn, .alphabet button {
+    transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .btn:hover, .alphabet button:hover {
+    box-shadow: 0 4px 16px #2c6e4944;
+    transform: scale(1.07);
+  }
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
   * {
     box-sizing: border-box;
@@ -376,23 +402,23 @@
 
   <section id="resources" style="margin-top:60px;">
   <section id="textile-climate" style="margin-top:60px;">
-    <h2>Tekstil & İklim</h2>
-    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Tekstil ve iklim" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
-    <p style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
+  <h2 class="fade-in">Tekstil & İklim</h2>
+  <img class="fade-in-img" src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Tekstil ve iklim" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
+  <p class="fade-in" style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
       Tekstil sektörü, küresel iklim değişikliğinde önemli bir rol oynar. Üretim süreçlerinde kullanılan enerji, su ve kimyasallar çevreye ciddi etkiler bırakabilir. Özellikle hızlı moda akımı, kaynakların aşırı tüketilmesine ve atık miktarının artmasına neden olmaktadır. Sürdürülebilir tekstil ürünleri tercih etmek, geri dönüşüm uygulamak ve organik pamuklu kıyafetler kullanmak karbon ayak izini azaltır. Tekstil atıklarının ayrıştırılması ve yeniden kullanılması çevre kirliliğini önler. Moda endüstrisinde döngüsel ekonomi ve ekolojik tasarım yaklaşımları, iklim dostu bir gelecek için kritik öneme sahiptir. Tüketici olarak, etik üretim yapan markaları desteklemek, bilinçli alışveriş yapmak ve ürünlerin ömrünü uzatmak çevreye katkı sağlar. Ayrıca, tekstil sektöründe yenilikçi teknolojiler ve sürdürülebilir malzemeler kullanmak, iklim değişikliğiyle mücadelede önemli adımlardır.
     </p>
   </section>
 
   <section id="environment-awareness" style="margin-top:60px;">
-    <h2>Çevre Bilinci</h2>
-    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Çevre bilinci" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
-    <p style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
+  <h2 class="fade-in">Çevre Bilinci</h2>
+  <img class="fade-in-img" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Çevre bilinci" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
+  <p class="fade-in" style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
       Çevre bilinci, doğal kaynakların korunması ve sürdürülebilir yaşam için toplumsal farkındalık geliştirmeyi ifade eder. Geri dönüşüm, enerji tasarrufu, suyun verimli kullanımı ve doğa dostu ürünler tercih etmek çevre bilincinin temel adımlarıdır. Bireyler, atıklarını ayrıştırarak geri dönüşüme katkı sağlayabilir, plastik kullanımını azaltabilir ve yenilenebilir enerji kaynaklarını destekleyebilir. Ayrıca, çevre bilinci eğitimleri ve kampanyaları ile toplumda sürdürülebilirlik kültürü yaygınlaştırılabilir. Küçük adımlar, büyük çevresel değişimlere yol açar; bu nedenle herkesin çevreye duyarlı olması önemlidir. Evde, okulda ve iş yerinde alınacak basit önlemlerle çevreye olan olumsuz etkiler azaltılabilir. Doğal yaşamı korumak, gelecek nesillere temiz bir dünya bırakmak için hepimizin sorumluluğu vardır.
     </p>
   </section>
-    <h2>Ek Kaynaklar</h2>
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ek kaynaklar" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
-    <p style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
+  <h2 class="fade-in">Ek Kaynaklar</h2>
+  <img class="fade-in-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ek kaynaklar" style="width:100%;max-width:500px;border-radius:12px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
+  <p class="fade-in" style="font-size:1.15rem;line-height:1.8;margin-bottom:32px;">
       Bu sitedeki bilgiler; güvenilir çevre ve sürdürülebilirlik kaynaklarından, akademik makalelerden, resmi kurumların yayınlarından ve güncel haberlerden derlenmiştir. İçerikler, <b>UNEP</b>, <b>WWF</b>, <b>T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı</b> gibi kaynaklardan ve bilimsel çalışmalardan alınmıştır. Ek kaynaklar ve daha fazla bilgi için aşağıdaki bağlantıları inceleyebilirsiniz. Bilgiler sürekli güncellenmekte ve doğruluğu kontrol edilmektedir. Doğru ve güncel bilgiye ulaşmak için güvenilir kaynakları takip etmek önemlidir.
     </p>
     <ul style="margin-bottom:32px;">
@@ -461,6 +487,28 @@
 </div>
 
 <script>
+// Fotoğraflar için animasyon
+function revealImagesOnScroll() {
+  document.querySelectorAll('.fade-in-img').forEach(function(el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealImagesOnScroll);
+window.addEventListener('DOMContentLoaded', revealImagesOnScroll);
+// Fade-in animasyonları için görünürlük kontrolü
+function revealOnScroll() {
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('DOMContentLoaded', revealOnScroll);
   const loginModal = document.getElementById('loginModal');
   const registerModal = document.getElementById('registerModal');
   const btnLogin = document.getElementById('btnLogin');
